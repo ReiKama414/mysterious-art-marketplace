@@ -92,7 +92,7 @@ const Header: React.FC = () => {
 													? "bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400"
 													: "text-gray-700 dark:text-gray-300"
 											}`}>
-											<span className="text-lg">{lang.flag}</span>
+											<span className="text-lg w-5 text-center -translate-y-px">{lang.flag}</span>
 											<span className="text-sm">{lang.name}</span>
 										</button>
 									))}
