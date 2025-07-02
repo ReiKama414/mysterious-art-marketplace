@@ -7,6 +7,7 @@ import { CartProvider } from "./contexts/CartContext";
 import Header from "./components/Layout/Header";
 import Footer from "./components/Layout/Footer";
 import ScrollToTop from "./components/Layout/ScrollToTop";
+import DemoWarning from "./components/UI/DemoWarning";
 
 import Home from "./pages/Home";
 
@@ -17,6 +18,7 @@ function App() {
 				<CartProvider>
 					<Router>
 						<ScrollToTop />
+						<DemoWarning />
 						<div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
 							{/* Header */}
 							<Header />
