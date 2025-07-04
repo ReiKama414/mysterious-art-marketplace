@@ -79,7 +79,7 @@ const DemoWarning: FC = () => {
 				</div>
 
 				{/* Footer */}
-				<div className="p-6 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-750 rounded-b-2xl">
+				<div className="p-6 border-t border-gray-200 dark:border-gray-700 rounded-b-2xl">
 					<button
 						onClick={handleClose}
 						className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105">
