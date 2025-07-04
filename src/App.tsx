@@ -17,6 +17,7 @@ import NotFound from "./pages/NotFound";
 import Explore from "./pages/Explore";
 import About from "./pages/About";
 import Cart from "./pages/Cart";
+import ArtworkDetail from "./pages/ArtworkDetail";
 
 function App() {
 	return (
@@ -36,6 +37,7 @@ function App() {
 									<Route path="/" element={<Home />} />
 									<Route path="/explore" element={<Explore />} />
 									<Route path="/cart" element={<Cart />} />
+									<Route path="/artwork/:id" element={<ArtworkDetail />} />
 									<Route path="/about" element={<About />} />
 									<Route path="*" element={<NotFound />} />
 								</Routes>
