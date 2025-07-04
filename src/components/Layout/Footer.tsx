@@ -54,6 +54,11 @@ const Footer: React.FC = () => {
 									{t("nav.admin")}
 								</Link>
 							</li>
+							<li>
+								<Link to="/414" className="text-gray-400 hover:text-white transition-colors duration-200">
+									404 (Demo)
+								</Link>
+							</li>
 						</ul>
 					</div>
 
@@ -63,7 +68,7 @@ const Footer: React.FC = () => {
 						<ul className="space-y-3">
 							<li className="flex items-center space-x-2 text-gray-400">
 								<Phone className="h-4 w-4" />
-								<span>+1 (555) 123-4567</span>
+								<span>+1 (414) 123-4567</span>
 							</li>
 							<li className="flex items-center space-x-2 text-gray-400">
 								<MapPin className="h-4 w-4" />
@@ -76,7 +81,9 @@ const Footer: React.FC = () => {
 				<div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
 					<p>
 						&copy; {new Date().getFullYear()} Mystic Gallery by{" "}
-						<Link to="/" className="underline underline-offset-2 text-indigo-400 hover:text-indigo-300 transition-colors duration-200">
+						<Link
+							to="/"
+							className="underline underline-offset-2 text-indigo-400 hover:text-indigo-300 transition-colors duration-200">
 							ReiKama414
 						</Link>
 						. All rights reserved.{" "}

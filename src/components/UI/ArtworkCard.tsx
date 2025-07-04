@@ -1,9 +1,8 @@
-import React from "react";
+import { FC, MouseEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { Heart, ShoppingCart, Eye } from "lucide-react";
 import { Artwork } from "../../types";
 import { useCart } from "../../contexts/CartContext";
-import { useLanguage } from "../../contexts/LanguageContext";
 import CartSuccessToast from "./CartSuccessToast";
 
 interface ArtworkCardProps {
@@ -11,21 +10,19 @@ interface ArtworkCardProps {
 	className?: string;
 }
 
-const ArtworkCard: React.FC<ArtworkCardProps> = ({ artwork, className = "" }) => {
+const ArtworkCard: FC<ArtworkCardProps> = ({ artwork, className = "" }) => {
 	const { addToCart } = useCart();
-	const { t } = useLanguage();
-	const [isHovered, setIsHovered] = React.useState(false);
-	const [isLiked, setIsLiked] = React.useState(false);
-	const [showSuccessToast, setShowSuccessToast] = React.useState(false);
+	const [isLiked, setIsLiked] = useState<boolean>(false);
+	const [showSuccessToast, setShowSuccessToast] = useState<boolean>(false);
 
-	const handleAddToCart = (e: React.MouseEvent) => {
+	const handleAddToCart = (e: MouseEvent) => {
 		e.preventDefault();
 		e.stopPropagation();
 		addToCart(artwork);
 		setShowSuccessToast(true);
 	};
 
-	const handleLike = (e: React.MouseEvent) => {
+	const handleLike = (e: MouseEvent) => {
 		e.preventDefault();
 		e.stopPropagation();
 		setIsLiked(!isLiked);
@@ -33,32 +30,24 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({ artwork, className = "" }) =>
 
 	return (
 		<>
-			<Link
-				to={`/artwork/${artwork.id}`}
-				className={`group block ${className}`}
-				onMouseEnter={() => setIsHovered(true)}
-				onMouseLeave={() => setIsHovered(false)}>
+			<Link to={`/artwork/${artwork.id}`} className={`group block ${className}`}>
 				<div className="relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700">
 					{/* Image Container */}
 					<div className="relative aspect-[4/3] overflow-hidden">
 						<img
 							src={artwork.image}
 							alt={artwork.title}
-							className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+							className="w-full h-full object-cover transition-transform duration-700 will-change-transform group-hover:scale-105 dark:group-hover:scale-100"
 						/>
 
 						{/* Overlay */}
 						<div
-							className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-opacity duration-300 ${
-								isHovered ? "opacity-100" : "opacity-0"
-							}`}
+							className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-opacity duration-300 opacity-0 group-hover:opacity-100`}
 						/>
 
 						{/* Action Buttons */}
 						<div
-							className={`absolute top-4 right-4 flex flex-col space-y-2 transition-all duration-300 ${
-								isHovered ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
-							}`}>
+							className={`absolute top-4 right-4 flex flex-col space-y-2 transition-all duration-300 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0`}>
 							<button
 								onClick={handleLike}
 								className={`p-2 rounded-full backdrop-blur-md transition-all duration-300 hover:scale-110 ${
@@ -77,10 +66,8 @@ const ArtworkCard: React.FC<ArtworkCardProps> = ({ artwork, className = "" }) =>
 
 						{/* Quick View Button */}
 						<div
-							className={`absolute bottom-4 left-4 right-4 transition-all duration-300 ${
-								isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-							}`}>
-							<div className="flex items-center space-x-2 bg-white/20 backdrop-blur-md rounded-lg px-3 py-2 text-white text-sm hover:bg-white/30 transition-colors duration-200">
+							className={`absolute bottom-4 left-4 right-4 backdrop-blur-md transition-all duration-300 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0`}>
+							<div className="flex items-center space-x-2 bg-white/20 rounded-lg px-3 py-2 text-white text-sm hover:bg-white/30 transition-colors duration-200">
 								<Eye className="h-4 w-4" />
 								<span>Quick View</span>
 							</div>

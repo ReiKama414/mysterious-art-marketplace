@@ -1,12 +1,12 @@
-import React from "react";
+import { FC, useEffect, useState } from "react";
 import { AlertTriangle } from "lucide-react";
 import { useLanguage } from "../../contexts/LanguageContext";
 
-const DemoWarning: React.FC = () => {
-	const [isVisible, setIsVisible] = React.useState(true);
+const DemoWarning: FC = () => {
+	const [isVisible, setIsVisible] = useState(true);
 	const { language } = useLanguage();
 
-	React.useEffect(() => {
+	useEffect(() => {
 		const hasSeenWarning = localStorage.getItem("hasSeenDemoWarning");
 		if (hasSeenWarning) {
 			setIsVisible(false);

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode, FC } from "react";
 import { CartItem, Artwork } from "../types";
 
 interface CartContextType {
@@ -13,7 +13,7 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const CartProvider: FC<{ children: ReactNode }> = ({ children }) => {
 	const [items, setItems] = useState<CartItem[]>([]);
 
 	useEffect(() => {

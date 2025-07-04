@@ -1,4 +1,4 @@
-import React from "react";
+import { FC, useEffect } from "react";
 import { CheckCircle, ShoppingCart } from "lucide-react";
 import { useLanguage } from "../../contexts/LanguageContext";
 
@@ -8,10 +8,10 @@ interface CartSuccessToastProps {
 	artworkTitle: string;
 }
 
-const CartSuccessToast: React.FC<CartSuccessToastProps> = ({ isVisible, onClose, artworkTitle }) => {
-	const { t, language } = useLanguage();
+const CartSuccessToast: FC<CartSuccessToastProps> = ({ isVisible, onClose, artworkTitle }) => {
+	const { language } = useLanguage();
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if (isVisible) {
 			const timer = setTimeout(() => {
 				onClose();

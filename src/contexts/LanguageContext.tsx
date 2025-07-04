@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import { createContext, FC, ReactNode, useContext, useState } from "react";
 import { Language } from "../types";
 import { translations } from "../utils/translations";
 
@@ -35,7 +35,7 @@ const getInitialLanguage = (): Language => {
 	return detectSystemLanguage();
 };
 
-export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const LanguageProvider: FC<{ children: ReactNode }> = ({ children }) => {
 	const [language, setLanguageState] = useState<Language>(getInitialLanguage);
 
 	const setLanguage = (lang: Language) => {

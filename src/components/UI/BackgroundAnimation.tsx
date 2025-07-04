@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import { useTheme } from "../../contexts/ThemeContext";
 
 interface Star {
@@ -14,7 +14,7 @@ interface Star {
 
 const STAR_COUNT = 45;
 
-const BackgroundAnimation: React.FC = () => {
+const BackgroundAnimation: FC = () => {
 	const { theme } = useTheme();
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const starsRef = useRef<Star[]>([]);
