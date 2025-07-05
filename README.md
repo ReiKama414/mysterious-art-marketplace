@@ -1,3 +1,5 @@
+> Parts of this documentation were generated with the assistance of GPT to streamline development and onboarding.
+
 # Mysterious Art Marketplace
 
 Welcome to the Mysterious Art Marketplace! Here, you can explore extraordinary artworks by talented artists from around the world. Our platform offers a unique opportunity to discover and purchase mysterious art pieces.
@@ -20,21 +22,25 @@ Welcome to the Mysterious Art Marketplace! Here, you can explore extraordinary a
 ## Installation & Running
 
 1. Clone this repository to your local machine.
+
    ```bash
    git clone https://github.com/ReiKama414/mysterious-art-marketplace.git
    ```
 
 2. Navigate into the project directory.
+
    ```bash
    cd mysterious-art-marketplace
    ```
 
 3. Install all dependencies.
+
    ```bash
    npm install
    ```
 
 4. Start the development server.
+
    ```bash
    npm run dev
    ```

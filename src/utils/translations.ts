@@ -7,6 +7,8 @@ export const translations = {
 			about: "About",
 			cart: "Cart",
 			admin: "Admin",
+			privacy: "Privacy",
+			terms: "Terms",
 		},
 		home: {
 			title: "Mysterious Art Gallery",
@@ -55,6 +57,11 @@ export const translations = {
 			orders: "Orders",
 			login: "Login",
 		},
+		legal: {
+			privacy: "Privacy Policy",
+			terms: "Terms of Service",
+			lastUpdated: "Last updated",
+		},
 		common: {
 			loading: "Loading...",
 			error: "Error",
@@ -74,6 +81,8 @@ export const translations = {
 			about: "關於",
 			cart: "購物車",
 			admin: "管理",
+			privacy: "隱私權",
+			terms: "條款",
 		},
 		home: {
 			title: "神秘藝術畫廊",
@@ -122,6 +131,11 @@ export const translations = {
 			orders: "訂單",
 			login: "登入",
 		},
+		legal: {
+			privacy: "隱私權政策",
+			terms: "服務條款",
+			lastUpdated: "最後更新",
+		},
 		common: {
 			loading: "載入中...",
 			error: "錯誤",
@@ -141,6 +155,8 @@ export const translations = {
 			about: "概要",
 			cart: "カート",
 			admin: "管理",
+			privacy: "プライバシー",
+			terms: "規約",
 		},
 		home: {
 			title: "神秘的なアートギャラリー",
@@ -188,6 +204,11 @@ export const translations = {
 			artists: "アーティスト",
 			orders: "注文",
 			login: "ログイン",
+		},
+		legal: {
+			privacy: "プライバシーポリシー",
+			terms: "利用規約",
+			lastUpdated: "最終更新",
 		},
 		common: {
 			loading: "読み込み中...",

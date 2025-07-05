@@ -141,3 +141,8 @@
 .dark .slider::-moz-range-track {
 	background: #374151;
 }
+
+input,
+textarea {
+	outline: none !important;
+}

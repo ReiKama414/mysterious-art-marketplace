@@ -1,10 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Palette, Mail, Phone, MapPin } from "lucide-react";
+import { Palette, Mail, Phone, MapPin, Shield, FileText } from "lucide-react";
 import { useLanguage } from "../../contexts/LanguageContext";
 
 const Footer: React.FC = () => {
-	const { t } = useLanguage();
+	const { t, language } = useLanguage();
+
+	const legalLinks = {
+		en: {
+			privacy: "Privacy Policy",
+			terms: "Terms of Service",
+		},
+		zh: {
+			privacy: "隱私權政策",
+			terms: "服務條款",
+		},
+		ja: {
+			privacy: "プライバシーポリシー",
+			terms: "利用規約",
+		},
+	};
+
+	const legal = legalLinks[language];
 
 	return (
 		<footer className="bg-gray-900 text-white">
@@ -62,13 +79,29 @@ const Footer: React.FC = () => {
 						</ul>
 					</div>
 
-					{/* Contact */}
+					{/* Legal & Contact */}
 					<div>
-						<h3 className="text-lg font-semibold mb-4">Contact</h3>
+						<h3 className="text-lg font-semibold mb-4">Legal & Contact</h3>
 						<ul className="space-y-3">
+							<li>
+								<Link
+									to="/privacy"
+									className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200">
+									<Shield className="h-4 w-4" />
+									<span>{legal.privacy}</span>
+								</Link>
+							</li>
+							<li>
+								<Link
+									to="/terms"
+									className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200">
+									<FileText className="h-4 w-4" />
+									<span>{legal.terms}</span>
+								</Link>
+							</li>
 							<li className="flex items-center space-x-2 text-gray-400">
 								<Phone className="h-4 w-4" />
-								<span>+1 (414) 123-4567</span>
+								<span>+1 (555) 123-4567</span>
 							</li>
 							<li className="flex items-center space-x-2 text-gray-400">
 								<MapPin className="h-4 w-4" />
@@ -86,7 +119,7 @@ const Footer: React.FC = () => {
 							className="underline underline-offset-2 text-indigo-400 hover:text-indigo-300 transition-colors duration-200">
 							ReiKama414
 						</Link>
-						. All rights reserved.{" "}
+						. All rights reserved.
 					</p>
 				</div>
 			</div>

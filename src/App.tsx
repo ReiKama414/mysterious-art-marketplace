@@ -20,6 +20,10 @@ import Cart from "./pages/Cart";
 import ArtworkDetail from "./pages/ArtworkDetail";
 import ArtistProfile from "./pages/ArtistProfile";
 import Artists from "./pages/Artists";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 
 function App() {
 	return (
@@ -36,6 +40,7 @@ function App() {
 							{/* Main Content */}
 							<main>
 								<Routes>
+									{/* Public Routes */}
 									<Route path="/" element={<Home />} />
 									<Route path="/explore" element={<Explore />} />
 									<Route path="/cart" element={<Cart />} />
@@ -43,6 +48,16 @@ function App() {
 									<Route path="/artists" element={<Artists />} />
 									<Route path="/artist/:id" element={<ArtistProfile />} />
 									<Route path="/about" element={<About />} />
+
+									{/* Admin Routes */}
+									<Route path="/admin" element={<AdminLogin />} />
+									<Route path="/admin/dashboard" element={<AdminDashboard />} />
+
+									{/* Additional Pages */}
+									<Route path="/privacy" element={<Privacy />} />
+									<Route path="/terms" element={<Terms />} />
+
+									{/* Catch-all for 404 Not Found */}
 									<Route path="*" element={<NotFound />} />
 								</Routes>
 							</main>
