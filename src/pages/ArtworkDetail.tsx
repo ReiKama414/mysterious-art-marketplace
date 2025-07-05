@@ -343,10 +343,10 @@ const ArtworkDetail: FC = () => {
 								{/* Modal Footer - Fixed at bottom */}
 								<div className="p-6 border-t border-gray-200 dark:border-gray-700 rounded-b-2xl">
 									<Link
-										to="/artists"
+										to={`/artist/${artist.id}`}
 										className="block w-full bg-indigo-600 hover:bg-indigo-700 text-white text-center py-3 rounded-lg font-medium transition-colors duration-200"
 										onClick={() => setShowArtistPanel(false)}>
-										View All Works
+										Detail
 									</Link>
 								</div>
 							</div>

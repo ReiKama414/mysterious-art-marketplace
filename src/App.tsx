@@ -18,6 +18,8 @@ import Explore from "./pages/Explore";
 import About from "./pages/About";
 import Cart from "./pages/Cart";
 import ArtworkDetail from "./pages/ArtworkDetail";
+import ArtistProfile from "./pages/ArtistProfile";
+import Artists from "./pages/Artists";
 
 function App() {
 	return (
@@ -38,6 +40,8 @@ function App() {
 									<Route path="/explore" element={<Explore />} />
 									<Route path="/cart" element={<Cart />} />
 									<Route path="/artwork/:id" element={<ArtworkDetail />} />
+									<Route path="/artists" element={<Artists />} />
+									<Route path="/artist/:id" element={<ArtistProfile />} />
 									<Route path="/about" element={<About />} />
 									<Route path="*" element={<NotFound />} />
 								</Routes>

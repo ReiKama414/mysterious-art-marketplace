@@ -3,19 +3,21 @@ import { AlertTriangle } from "lucide-react";
 import { useLanguage } from "../../contexts/LanguageContext";
 
 const DemoWarning: FC = () => {
-	const [isVisible, setIsVisible] = useState(true);
+	const [isVisible, setIsVisible] = useState<boolean>(true);
 	const { language } = useLanguage();
 
 	useEffect(() => {
-		const hasSeenWarning = localStorage.getItem("hasSeenDemoWarning");
-		if (hasSeenWarning) {
-			setIsVisible(false);
+		const lastSeen = localStorage.getItem("demoWarningLastSeen");
+		const now = Date.now();
+
+		if (!lastSeen || now - parseInt(lastSeen, 10) > 24 * 60 * 60 * 1000) {
+			setIsVisible(true);
 		}
 	}, []);
 
 	const handleClose = () => {
 		setIsVisible(false);
-		localStorage.setItem("hasSeenDemoWarning", "true");
+		localStorage.setItem("demoWarningLastSeen", Date.now().toString());
 	};
 
 	if (!isVisible) return null;
