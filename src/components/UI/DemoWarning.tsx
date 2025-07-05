@@ -3,7 +3,7 @@ import { AlertTriangle } from "lucide-react";
 import { useLanguage } from "../../contexts/LanguageContext";
 
 const DemoWarning: FC = () => {
-	const [isVisible, setIsVisible] = useState<boolean>(true);
+	const [isVisible, setIsVisible] = useState<boolean | null>(null);
 	const { language } = useLanguage();
 
 	useEffect(() => {
@@ -12,6 +12,8 @@ const DemoWarning: FC = () => {
 
 		if (!lastSeen || now - parseInt(lastSeen, 10) > 24 * 60 * 60 * 1000) {
 			setIsVisible(true);
+		} else {
+			setIsVisible(false);
 		}
 	}, []);
 
@@ -20,6 +22,7 @@ const DemoWarning: FC = () => {
 		localStorage.setItem("demoWarningLastSeen", Date.now().toString());
 	};
 
+	if (isVisible === null) return null;
 	if (!isVisible) return null;
 
 	const content = {
@@ -70,14 +73,12 @@ const DemoWarning: FC = () => {
 				</div>
 
 				{/* Content */}
-				<div className="p-6">
-					<div className="space-y-4 text-gray-600 dark:text-gray-400">
-						<p className="leading-relaxed">{text.description1}</p>
-						<p className="leading-relaxed">
-							<span className="text-red-600 dark:text-red-400 font-semibold">{text.description2}</span>
-						</p>
-						<p className="leading-relaxed">{text.description3}</p>
-					</div>
+				<div className="p-6 space-y-4 text-gray-600 dark:text-gray-400">
+					<p className="leading-relaxed">{text.description1}</p>
+					<p className="leading-relaxed">
+						<span className="text-red-600 dark:text-red-400 font-semibold">{text.description2}</span>
+					</p>
+					<p className="leading-relaxed">{text.description3}</p>
 				</div>
 
 				{/* Footer */}
