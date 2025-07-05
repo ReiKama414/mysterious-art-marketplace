@@ -4,6 +4,7 @@ import { Trash2, Plus, Minus, ShoppingBag, ArrowRight } from "lucide-react";
 import { useCart } from "../contexts/CartContext";
 import { useLanguage } from "../contexts/LanguageContext";
 import CheckoutModal from "../components/UI/CheckoutModal";
+import PageTitle from "../components/Layout/PageTitle";
 
 const Cart: FC = () => {
 	const { items, removeFromCart, updateQuantity, total, clearCart } = useCart();
@@ -30,6 +31,7 @@ const Cart: FC = () => {
 	if (items.length === 0) {
 		return (
 			<div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+				<PageTitle titleKey="cart.title" />
 				<div className="max-w-4xl mx-auto text-center py-16">
 					<div className="text-gray-400 mb-6 animate-bounce-gentle">
 						<ShoppingBag className="h-24 w-24 mx-auto" />
@@ -49,6 +51,7 @@ const Cart: FC = () => {
 
 	return (
 		<div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+			<PageTitle titleKey="cart.title" />
 			<div className="max-w-6xl mx-auto">
 				{/* Header */}
 				<div className="flex items-center justify-between mb-8">

@@ -5,6 +5,7 @@ import { useLanguage } from "../contexts/LanguageContext";
 
 import "aos/dist/aos.css";
 import AOS from "aos";
+import PageTitle from "../components/Layout/PageTitle";
 
 const statsData = [
 	{ label: "Artworks", target: 500 },
@@ -60,6 +61,7 @@ const About: FC = () => {
 
 	return (
 		<div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+			<PageTitle titleKey="nav.about" />
 			<div className="max-w-7xl mx-auto">
 				{/* Hero Section */}
 				<div className="text-center mb-16" data-aos="fade-up">

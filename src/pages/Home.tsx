@@ -9,6 +9,7 @@ import { useInView } from "react-intersection-observer";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
+import PageTitle from "../components/Layout/PageTitle";
 
 const Home: FC = () => {
 	const { t } = useLanguage();
@@ -25,6 +26,7 @@ const Home: FC = () => {
 	return (
 		<div className="min-h-screen">
 			<BackgroundAnimation />
+			<PageTitle titleKey="nav.home" />
 
 			{/* Hero Section */}
 			<section className="relative pt-24 pb-16 px-4 sm:px-6 lg:px-8" data-aos="fade-up">

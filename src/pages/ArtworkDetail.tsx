@@ -20,6 +20,7 @@ import { useLanguage } from "../contexts/LanguageContext";
 import CartSuccessToast from "../components/UI/CartSuccessToast";
 import CheckoutModal from "../components/UI/CheckoutModal";
 import ImageGalleryModal from "../components/UI/ImageGalleryModal";
+import PageTitle from "../components/Layout/PageTitle";
 
 const ArtworkDetail: FC = () => {
 	const { id } = useParams<{ id: string }>();
@@ -40,6 +41,7 @@ const ArtworkDetail: FC = () => {
 	if (!artwork) {
 		return (
 			<div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+				<PageTitle customTitle="Artwork Not Found" />
 				<div className="text-center">
 					<h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Artwork not found</h1>
 					<Link
@@ -81,6 +83,7 @@ const ArtworkDetail: FC = () => {
 	return (
 		<>
 			<div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+				<PageTitle customTitle={artwork.title} />
 				<div className="max-w-7xl mx-auto">
 					{/* Back Button */}
 					<Link

@@ -13,9 +13,11 @@ import {
 	Eye,
 	Bookmark,
 	BookmarkCheck,
+	CheckCircle,
 } from "lucide-react";
 import { mockArtists, mockArtworks } from "../data/mockData";
 import ArtworkCard from "../components/UI/ArtworkCard";
+import PageTitle from "../components/Layout/PageTitle";
 
 const ArtistProfile: FC = () => {
 	const { id } = useParams<{ id: string }>();
@@ -29,6 +31,7 @@ const ArtistProfile: FC = () => {
 	if (!artist) {
 		return (
 			<div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+				<PageTitle customTitle="Artist Not Found" />
 				<div className="text-center">
 					<h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Artist not found</h1>
 					<Link
@@ -62,6 +65,7 @@ const ArtistProfile: FC = () => {
 
 	return (
 		<div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+			<PageTitle titleKey={`${artist.name} Profile`} />
 			<div className="max-w-7xl mx-auto">
 				{/* Back Button */}
 				<Link
@@ -93,7 +97,12 @@ const ArtistProfile: FC = () => {
 							<h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{artist.name}</h1>
 							{artist.isVerified && (
 								<div className="flex items-center justify-center md:justify-start space-x-1 mb-3">
-									<span className="text-indigo-600 dark:text-indigo-400 font-medium">✓ Verified Artist</span>
+									<span className="inline-flex items-center space-x-1 text-sm text-indigo-600 dark:text-indigo-400">
+										<span>
+											<CheckCircle className="h-4 w-4" />
+										</span>
+										<span> Verified Artist</span>
+									</span>
 								</div>
 							)}
 

@@ -1,9 +1,10 @@
 import { FC, useState } from "react";
 import { Link } from "react-router-dom";
-import { Star, Calendar, Palette, UserPlus, UserCheck } from "lucide-react";
+import { Star, Calendar, Palette, UserPlus, UserCheck, CheckCircle } from "lucide-react";
 import { mockArtists, mockArtworks } from "../data/mockData";
 import { useLanguage } from "../contexts/LanguageContext";
 import FileUpload from "../components/UI/FileUpload";
+import PageTitle from "../components/Layout/PageTitle";
 
 const Artists: FC = () => {
 	const { t } = useLanguage();
@@ -62,6 +63,7 @@ const Artists: FC = () => {
 
 	return (
 		<div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+			<PageTitle titleKey="nav.artists" />
 			<div className="max-w-7xl mx-auto">
 				{/* Header */}
 				<div className="text-center mb-12">
@@ -96,10 +98,19 @@ const Artists: FC = () => {
 											className="w-16 h-16 rounded-full object-cover border-4 border-white dark:border-gray-700 shadow-lg"
 										/>
 										<div>
-											<h3 className="text-xl font-bold text-gray-900 dark:text-white">{artist.name}</h3>
+											<Link
+												to={`/artist/${artist.id}`}
+												className="block text-xl font-bold text-gray-900 dark:text-white mb-1 hover:opacity-75 transition-opacity">
+												{artist.name}
+											</Link>
 											{artist.isVerified && (
 												<div className="flex items-center space-x-1">
-													<span className="text-sm text-indigo-600 dark:text-indigo-400">✓ Verified</span>
+													<span className="inline-flex items-center space-x-1 text-sm text-indigo-600 dark:text-indigo-400">
+														<span>
+															<CheckCircle className="h-4 w-4" />
+														</span>
+														<span> Verified Artist</span>
+													</span>
 												</div>
 											)}
 											<div className="flex items-center space-x-1 mt-1">

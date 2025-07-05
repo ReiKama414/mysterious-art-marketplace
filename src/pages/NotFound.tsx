@@ -5,6 +5,7 @@ import { useLanguage } from "../contexts/LanguageContext";
 
 import "aos/dist/aos.css";
 import AOS from "aos";
+import PageTitle from "../components/Layout/PageTitle";
 
 const NotFound: FC = () => {
 	const { language } = useLanguage();
@@ -51,6 +52,7 @@ const NotFound: FC = () => {
 
 	return (
 		<div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+			<PageTitle customTitle="404" />
 			<div className="max-w-2xl mx-auto text-center">
 				{/* Animated 404 */}
 				<div className="relative mb-8">

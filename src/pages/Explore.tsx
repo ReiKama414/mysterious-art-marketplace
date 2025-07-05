@@ -5,6 +5,7 @@ import { mockArtworks } from "../data/mockData";
 import ArtworkCard from "../components/UI/ArtworkCard";
 import CustomSelect from "../components/UI/CustomSelect";
 import { Artwork } from "../types";
+import PageTitle from "../components/Layout/PageTitle";
 
 const Explore: FC = () => {
 	const { t } = useLanguage();
@@ -74,6 +75,7 @@ const Explore: FC = () => {
 
 	return (
 		<div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+			<PageTitle titleKey="explore.title" />
 			<div className="max-w-7xl mx-auto">
 				{/* Header */}
 				<div className="mb-8">
