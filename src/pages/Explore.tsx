@@ -16,6 +16,7 @@ const Explore: FC = () => {
 	const [priceRange, setPriceRange] = useState<[number, number]>([0, 5000]);
 	const [sortBy, setSortBy] = useState<string>("newest");
 	const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+	const [isDesktop, setIsDesktop] = useState<boolean>(window.innerWidth >= 768);
 	const [showFilters, setShowFilters] = useState<boolean>(false);
 
 	const categories = [
@@ -41,6 +42,18 @@ const Explore: FC = () => {
 		{ value: "priceLowHigh", label: t("explore.priceLowHigh") },
 		{ value: "priceHighLow", label: t("explore.priceHighLow") },
 	];
+
+	useEffect(() => {
+		const handleResize = () => {
+			const isNowDesktop = window.innerWidth >= 768;
+			setIsDesktop(isNowDesktop);
+			if (!isNowDesktop) setViewMode("grid");
+		};
+
+		window.addEventListener("resize", handleResize);
+		handleResize();
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
 
 	useEffect(() => {
 		let filtered = mockArtworks.filter((artwork) => {
@@ -179,47 +192,65 @@ const Explore: FC = () => {
 					{/* Main Content */}
 					<div className="flex-1">
 						{/* Controls */}
-						<div className="flex items-center justify-between mb-6 bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm border border-gray-200 dark:border-gray-700">
-							<div className="flex items-center space-x-4">
+						<div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-6 bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm border border-gray-200 dark:border-gray-700">
+							{/* 左側：Filters + artworks found */}
+							<div className="flex flex-col sm:flex-row sm:items-center sm:gap-4 gap-2">
+								{/* Filters Button */}
 								<button
 									onClick={() => setShowFilters(true)}
-									className="lg:hidden flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-200 hover:scale-105">
+									className="flex items-center space-x-2 px-4 py-2 text-gray-600 dark:text-white bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-200 hover:scale-105">
 									<Filter className="h-4 w-4" />
-									<span>Filters</span>
+									<span className="text-sm font-medium">Filters</span>
 								</button>
 
-								<span className="text-sm text-gray-600 dark:text-gray-400">
+								{/* artworks found */}
+								<span className="sm:block hidden text-sm text-gray-600 dark:text-gray-400">
 									{filteredArtworks.length} artworks found
 								</span>
 							</div>
 
-							<div className="flex items-center space-x-4">
-								{/* Sort */}
-								<CustomSelect value={sortBy} onChange={setSortBy} options={sortOptions} className="min-w-[160px]" />
+							{/* 右側：Sort + View Mode */}
+							<div className="flex flex-col sm:flex-row sm:items-center sm:gap-4 gap-2 md:flex-row md:items-center md:gap-4">
+								{/* Sort Select */}
+								<div className="w-full sm:w-auto">
+									<CustomSelect
+										value={sortBy}
+										onChange={setSortBy}
+										options={sortOptions}
+										className="w-full sm:min-w-[160px]"
+									/>
+								</div>
 
 								{/* View Mode */}
-								<div className="flex items-center space-x-1 bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
-									<button
-										onClick={() => setViewMode("grid")}
-										className={`p-2 rounded transition-all duration-200 hover:scale-105 ${
-											viewMode === "grid"
-												? "bg-white dark:bg-gray-600 shadow-sm"
-												: "hover:bg-gray-200 dark:hover:bg-gray-600"
-										}`}>
-										<Grid className="h-4 w-4 text-gray-600 dark:text-gray-400" />
-									</button>
-									<button
-										onClick={() => setViewMode("list")}
-										className={`p-2 rounded transition-all duration-200 hover:scale-105 ${
-											viewMode === "list"
-												? "bg-white dark:bg-gray-600 shadow-sm"
-												: "hover:bg-gray-200 dark:hover:bg-gray-600"
-										}`}>
-										<List className="h-4 w-4 text-gray-600 dark:text-gray-400" />
-									</button>
-								</div>
+								{isDesktop && (
+									<div className="flex items-center space-x-1 bg-gray-100 dark:bg-gray-700 rounded-lg p-1 self-start sm:self-auto">
+										<button
+											onClick={() => setViewMode("grid")}
+											className={`p-2 rounded transition-all duration-200 hover:scale-105 ${
+												viewMode === "grid"
+													? "bg-white dark:bg-gray-600 shadow-sm"
+													: "hover:bg-gray-200 dark:hover:bg-gray-600"
+											}`}>
+											<Grid className="h-4 w-4 text-gray-600 dark:text-gray-400" />
+										</button>
+										<button
+											onClick={() => setViewMode("list")}
+											className={`p-2 rounded transition-all duration-200 hover:scale-105 ${
+												viewMode === "list"
+													? "bg-white dark:bg-gray-600 shadow-sm"
+													: "hover:bg-gray-200 dark:hover:bg-gray-600"
+											}`}>
+											<List className="h-4 w-4 text-gray-600 dark:text-gray-400" />
+										</button>
+									</div>
+								)}
 							</div>
 						</div>
+
+						{/* artworks found */}
+						<p className="sm:hidden text-sm text-gray-600 dark:text-gray-400 mb-4 ps-2">
+							{filteredArtworks.length} artworks found
+						</p>
 
 						{/* Artworks Grid */}
 						{filteredArtworks.length === 0 ? (
