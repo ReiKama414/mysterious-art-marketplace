@@ -115,7 +115,10 @@ const Footer: React.FC = () => {
 					<p>
 						&copy; {new Date().getFullYear()} Mystic Gallery by{" "}
 						<Link
-							to="/"
+							to="https://reikama-414-site-v3.vercel.app"
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="ReiKama414"
 							className="underline underline-offset-2 text-indigo-400 hover:text-indigo-300 transition-colors duration-200">
 							ReiKama414
 						</Link>
